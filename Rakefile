@@ -1,80 +1,57 @@
-require File.expand_path(File.join(File.dirname(__FILE__), "..", "rake_helpers"))
+require 'rubygems'
+require 'rake'
 
-##############################################################################
-# Package && release
-##############################################################################
-RUBY_FORGE_PROJECT  = "merb"
-PROJECT_URL         = "http://merbivore.com"
-PROJECT_SUMMARY     = "DataMapper plugin providing DataMapper support for Merb"
-PROJECT_DESCRIPTION = PROJECT_SUMMARY
+# Assume a typical dev checkout to fetch the current merb-core version
+require File.expand_path('../../merb/merb-core/lib/merb-core/version', __FILE__)
 
-GEM_AUTHOR  = "Jason Toy"
-GEM_EMAIL   = "jtoy@rubynow.com"
+# Load this library's version information
+require File.expand_path('../lib/merb_datamapper/version', __FILE__)
 
-GEM_NAME     = "merb_datamapper"
-PKG_BUILD    = ENV['PKG_BUILD'] ? '.' + ENV['PKG_BUILD'] : ''
-GEM_VERSION  = Merb::VERSION + PKG_BUILD
+begin
 
-RELEASE_NAME = "REL #{GEM_VERSION}"
+  require 'jeweler'
 
-GEM_DEPENDENCIES = [
-  ["dm-core",       "~> #{Merb::DM_VERSION}"],
-  ["dm-migrations", "~> #{Merb::DM_VERSION}"],
-  ["merb-core",     "~> #{GEM_VERSION}"]
-]
+  Jeweler::Tasks.new do |gemspec|
 
-require "extlib/tasks/release"
+    gemspec.version     = Merb::DataMapper::VERSION
 
-spec = Gem::Specification.new do |s|
-  s.rubyforge_project = RUBY_FORGE_PROJECT
-  s.name = GEM_NAME
-  s.version = GEM_VERSION
-  s.platform = Gem::Platform::RUBY
-  s.has_rdoc = true
-  s.extra_rdoc_files = ["LICENSE", 'TODO']
-  s.summary = PROJECT_SUMMARY
-  s.description = PROJECT_DESCRIPTION
-  s.author = GEM_AUTHOR
-  s.email = GEM_EMAIL
-  s.homepage = PROJECT_URL
-  GEM_DEPENDENCIES.each do |gem, version|
-    s.add_dependency gem, version
+    gemspec.name        = "merb_datamapper"
+    gemspec.description = "Merb plugin that provides support for datamapper"
+    gemspec.summary     = "Merb plugin that allows you to use datamapper with your merb app"
+
+    gemspec.authors     = [ "Jason Toy" ]
+    gemspec.email       = "jtoy@rubynow.com"
+    gemspec.homepage    = "http://github.com/merb/merb_datamapper"
+
+    gemspec.files       = %w(Generators LICENSE Rakefile README TODO) + Dir['{lib,spec}/**/*']
+
+    # Runtime dependencies
+    gemspec.add_dependency 'merb-core',     "= #{Merb::VERSION}"
+    gemspec.add_dependency 'dm-core',       '~> 0.10'
+    gemspec.add_dependency 'dm-migrations', '~> 0.10'
+
+    # Development dependencies
+    gemspec.add_development_dependency 'rspec', '>= 1.2.9'
+
   end
-  s.require_path = 'lib'
-  s.files = %w(LICENSE Rakefile TODO Generators) + Dir.glob("{lib}/**/*")
+
+  Jeweler::GemcutterTasks.new
+
+rescue LoadError
+  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
 
-Rake::GemPackageTask.new(spec) do |pkg|
-  pkg.gem_spec = spec
+require 'spec/rake/spectask'
+Spec::Rake::SpecTask.new(:spec) do |spec|
+  spec.spec_opts << '--options' << 'spec/spec.opts' if File.exists?('spec/spec.opts')
+  spec.libs << 'lib' << 'spec'
+  spec.spec_files = FileList['spec/**/*_spec.rb']
 end
 
-desc "Install the gem"
-task :install do
-  Merb::RakeHelper.install(GEM_NAME, :version => GEM_VERSION)
-end
-
-desc "Uninstall the gem"
-task :uninstall do
-  Merb::RakeHelper.uninstall(GEM_NAME, :version => GEM_VERSION)
-end
-
-desc "Create a gemspec file"
-task :gemspec do
-  File.open("#{GEM_NAME}.gemspec", "w") do |file|
-    file.puts spec.to_ruby
-  end
-end
-
-desc "Run all examples (or a specific spec with TASK=xxxx)"
-Spec::Rake::SpecTask.new('spec') do |t|
-  t.spec_opts  = ["-cfs"]
-  t.spec_files = begin
-    if ENV["TASK"] 
-      ENV["TASK"].split(',').map { |task| "spec/**/#{task}_spec.rb" }
-    else
-      FileList['spec/**/*_spec.rb']
-    end
-  end
+Spec::Rake::SpecTask.new(:rcov) do |spec|
+  spec.libs << 'lib' << 'spec'
+  spec.pattern = 'spec/**/*_spec.rb'
+  spec.rcov = true
 end
 
 desc 'Default: run spec examples'
