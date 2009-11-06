@@ -1,5 +1,5 @@
-require File.join(File.dirname(__FILE__), 'spec_helper')
-require File.join(File.dirname(__FILE__), '..', 'lib', 'merb', 'orms', 'data_mapper', 'connection')
+require 'spec_helper'
+require 'merb_datamapper/connection'
 
 describe 'Merb datamapper' do
   it "should read the configuration file" do

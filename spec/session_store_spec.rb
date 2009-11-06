@@ -1,6 +1,6 @@
-require File.join(File.dirname(__FILE__), 'spec_helper')
+require 'spec_helper'
+require 'merb_datamapper/data_mapper_session'
 
-require 'merb/session/data_mapper_session'
 describe Merb::DataMapperSessionStore do
   before(:all) do
     DataMapper.setup(:default, "sqlite3::memory:")

@@ -1,6 +1,5 @@
-require File.dirname(__FILE__) + "/spec_helper"
-#require 'merb-core/dispatch/session/store_container'
-require File.join( File.dirname(__FILE__), "..", "lib", 'merb', 'session', 'data_mapper_session')
+require 'spec_helper'
+require 'merb_datamapper/data_mapper_session'
 
 describe Merb::DataMapperSession do
 
