@@ -1,8 +1,8 @@
 if defined?(Merb::Plugins)
 
   require 'dm-core'
+  require 'merb_datamapper/connection'
 
-  require File.dirname(__FILE__) / "merb" / "orms" / "data_mapper" / "connection"
   Merb::Plugins.add_rakefiles "merb_datamapper" / "merbtasks"
 
   # conditionally assign things, so as not to override previously set options.
@@ -47,7 +47,7 @@ if defined?(Merb::Plugins)
       Merb.logger.verbose! "Checking if we need to use DataMapper sessions"
       if Merb::Config.session_store == 'datamapper'
         Merb.logger.verbose! "Using DataMapper sessions"
-        require File.dirname(__FILE__) / "merb" / "session" / "data_mapper_session"
+        require 'merb_datamapper/data_mapper_session'
       end
 
       # take advantage of the fact #id returns the key of the model, unless #id is a property

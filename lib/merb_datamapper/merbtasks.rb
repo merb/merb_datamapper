@@ -1,5 +1,5 @@
 require 'fileutils'
-require 'merb/orms/data_mapper/connection'
+require 'merb_datamapper/connection'
 
 namespace :db do
   
