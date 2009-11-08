@@ -27,8 +27,8 @@ begin
 
     # Runtime dependencies
     gemspec.add_dependency 'merb-core',     "= #{Merb::VERSION}"
-    gemspec.add_dependency 'dm-core',       '~> 0.10'
-    gemspec.add_dependency 'dm-migrations', '~> 0.10'
+    gemspec.add_dependency 'dm-core',       Merb::DataMapper::DM_VERSION_REQUIREMENT
+    gemspec.add_dependency 'dm-migrations', Merb::DataMapper::DM_VERSION_REQUIREMENT
 
     # Development dependencies
     gemspec.add_development_dependency 'rspec', '>= 1.2.9'
