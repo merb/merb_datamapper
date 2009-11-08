@@ -1,0 +1,27 @@
+## MAC OS
+.DS_Store
+
+## TEXTMATE
+*.tmproj
+tmtags
+
+## EMACS
+*~
+\#*
+.\#*
+
+## VIM
+*.swp
+
+## Netbeans
+nbproject
+
+## DIRECTORIES
+pkg
+log
+coverage
+
+## FILES
+*.log
+*.db
+
