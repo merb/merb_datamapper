@@ -54,7 +54,8 @@ namespace :db do
     when 'postgres'
       `createdb -U #{config[:username]} #{config[:database]}`
     when 'mysql'
-      `mysqladmin -u #{config[:username]} #{config[:password] ? "-p'#{config[:password]}'" : ''} create #{config[:database]}`
+      user, password, database = config[:username], config[:password], config[:database]
+      `mysql -u #{user} #{password ? "-p #{password}" : ''} -e "create database #{database}"`
     when 'sqlite3'
       Rake::Task['rake:db:automigrate'].invoke
     else
@@ -62,13 +63,16 @@ namespace :db do
     end
   end
 
-  desc "Drop the database (postgres only)"
+  desc "Drop the database (postgres and mysql only)"
   task :drop do
     config = Merb::Orms::DataMapper.config
     puts "Dropping database '#{config[:database]}'"
     case config[:adapter]
     when 'postgres'
       `dropdb -U #{config[:username]} #{config[:database]}`
+    when 'mysql'
+      user, password, database = config[:username], config[:password], config[:database]
+      `mysql -u #{user} #{password ? "-p #{password}" : ''} -e "drop database #{database}"`
     else
       raise "Adapter #{config[:adapter]} not supported for dropping databases yet.\ntry db:automigrate"
     end
