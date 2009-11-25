@@ -9,6 +9,7 @@ require File.expand_path('../lib/merb_datamapper/version', __FILE__)
 
 begin
 
+  gem 'jeweler', '~> 1.4'
   require 'jeweler'
 
   Jeweler::Tasks.new do |gemspec|
