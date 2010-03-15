@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{merb_datamapper}
-  s.version = "1.1.0.pre"
+  s.version = "1.1.0.rc1"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jason Toy"]
-  s.date = %q{2010-01-23}
+  s.date = %q{2010-03-15}
   s.description = %q{Merb plugin that provides support for datamapper}
   s.email = %q{jtoy@rubynow.com}
   s.extra_rdoc_files = [
@@ -53,7 +53,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/merb/merb_datamapper}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{Merb plugin that allows you to use datamapper with your merb app}
   s.test_files = [
     "spec/connection_spec.rb",
