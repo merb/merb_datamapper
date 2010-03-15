@@ -14,7 +14,7 @@ begin
 
   Jeweler::Tasks.new do |gemspec|
 
-    gemspec.version     = Merb::DataMapper::VERSION
+    gemspec.version     = Merb::DataMapper::VERSION.dup
 
     gemspec.name        = "merb_datamapper"
     gemspec.description = "Merb plugin that provides support for datamapper"
