@@ -73,14 +73,15 @@ class Merb::Orms::DataMapper::Associations < Merb::BootLoader
   end
 end
 
-if Merb::Plugins.config[:merb_datamapper][:use_repository_block]
 
-  class Merb::Orms::DataMapper::IdentityMapSupport < Merb::BootLoader
 
-    after RackUpApplication
+class Merb::Orms::DataMapper::IdentityMapSupport < Merb::BootLoader
 
-    def self.run
+  after RackUpApplication
 
+  def self.run
+
+    if Merb::Plugins.config[:merb_datamapper][:use_repository_block]
       app = Merb::Config[:app]
       def app.call(env)
         DataMapper.repository do |r|
@@ -88,11 +89,11 @@ if Merb::Plugins.config[:merb_datamapper][:use_repository_block]
           super
         end
       end
-
     end
-  end
 
+  end
 end
+
 
 generators = File.join(File.dirname(__FILE__), 'generators')
 Merb.add_generators generators / 'data_mapper_model'
