@@ -28,6 +28,9 @@ module DataMapper
   end
 end
 
+# Sets DataMapper as ORM
+Merb.orm = :datamapper
+
 class Merb::Orms::DataMapper::Connect < Merb::BootLoader
   after BeforeAppLoads
 
