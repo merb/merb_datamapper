@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{merb_datamapper}
-  s.version = "1.1.1"
+  s.version = "1.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jason Toy"]
@@ -71,20 +71,20 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<merb-core>, ["~> 1.1"])
-      s.add_runtime_dependency(%q<dm-core>, ["~> 0.10"])
-      s.add_runtime_dependency(%q<dm-migrations>, ["~> 0.10"])
+      s.add_runtime_dependency(%q<merb-core>, ["~> 1.2"])
+      s.add_runtime_dependency(%q<dm-core>, ["~> 1.0"])
+      s.add_runtime_dependency(%q<dm-migrations>, ["~> 1.0"])
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
     else
-      s.add_dependency(%q<merb-core>, ["~> 1.1"])
-      s.add_dependency(%q<dm-core>, ["~> 0.10"])
-      s.add_dependency(%q<dm-migrations>, ["~> 0.10"])
+      s.add_dependency(%q<merb-core>, ["~> 1.2"])
+      s.add_dependency(%q<dm-core>, ["~> 1.0"])
+      s.add_dependency(%q<dm-migrations>, ["~> 1.0"])
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
     end
   else
-    s.add_dependency(%q<merb-core>, ["~> 1.1"])
-    s.add_dependency(%q<dm-core>, ["~> 0.10"])
-    s.add_dependency(%q<dm-migrations>, ["~> 0.10"])
+    s.add_dependency(%q<merb-core>, ["~> 1.2"])
+    s.add_dependency(%q<dm-core>, ["~> 1.0"])
+    s.add_dependency(%q<dm-migrations>, ["~> 1.0"])
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
   end
 end

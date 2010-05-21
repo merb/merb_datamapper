@@ -27,7 +27,7 @@ begin
     gemspec.files       = %w(Generators LICENSE Rakefile README TODO) + Dir['{lib,spec}/**/*']
 
     # Runtime dependencies
-    gemspec.add_dependency 'merb-core',     "~> 1.1"
+    gemspec.add_dependency 'merb-core',     "~> 1.2"
     gemspec.add_dependency 'dm-core',       Merb::DataMapper::DM_VERSION_REQUIREMENT
     gemspec.add_dependency 'dm-migrations', Merb::DataMapper::DM_VERSION_REQUIREMENT
 
