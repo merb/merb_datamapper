@@ -24,4 +24,4 @@ coverage
 ## FILES
 *.log
 *.db
-
+*.gem
