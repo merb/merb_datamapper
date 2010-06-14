@@ -1,6 +1,8 @@
 #!/usr/bin/env gem build
 # -*- encoding: utf-8 -*-
 
+require 'date'
+
 # Load this library's version information
 require File.expand_path('../lib/merb_datamapper/version', __FILE__)
 
