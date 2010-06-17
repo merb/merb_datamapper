@@ -22,7 +22,7 @@ Gem::Specification.new do |gem|
   gem.files = Dir['Generators', 'Rakefile', '{lib,spec}/**/*', 'README*', 'LICENSE*', 'TODO*'] & `git ls-files -z`.split("\0")
 
   # Runtime dependencies
-  gem.add_dependency 'merb-core',     "~> 1.2"
+  gem.add_dependency 'merb-core',     "~> 1.1"
   gem.add_dependency 'dm-core',       Merb::DataMapper::DM_VERSION_REQUIREMENT
   gem.add_dependency 'dm-migrations', Merb::DataMapper::DM_VERSION_REQUIREMENT
 
