@@ -60,19 +60,17 @@ class Merb::Orms::DataMapper::Connect < Merb::BootLoader
   end
 end
 
-class Merb::Orms::DataMapper::Associations < Merb::BootLoader
+class Merb::Orms::DataMapper::Finalize < Merb::BootLoader
   after LoadClasses
 
   def self.run
-
-    Merb.logger.verbose! 'Merb::Orms::DataMapper::Associations - defining lazy relationship properties'
-
-    DataMapper::Model.descendants.each do |model|
-      model.relationships.each_value { |r| r.child_key }
+    if DataMapper.respond_to?(:finalize)
+      DataMapper.finalize
+    else
+      DataMapper::Model.descendants.each do |model|
+        model.relationships.each_value { |r| r.child_key }
+      end
     end
-
-    Merb.logger.verbose! 'Merb::Orms::DataMapper::Associations - complete'
-
   end
 end
 

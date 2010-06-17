@@ -16,10 +16,12 @@ namespace :db do
   end
   desc "Perform automigration"
   task :automigrate => :merb_env do
+    ::DataMapper.finalize if ::DataMapper.respond_to?(:finalize)
     ::DataMapper.auto_migrate!
   end
   desc "Perform non destructive automigration"
   task :autoupgrade => :merb_env do
+    ::DataMapper.finalize if ::DataMapper.respond_to?(:finalize)
     ::DataMapper.auto_upgrade!
   end
 
