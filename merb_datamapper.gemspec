@@ -10,8 +10,8 @@ Gem::Specification.new do |gem|
   gem.name        = 'merb_datamapper'
   gem.version     = Merb::DataMapper::VERSION.dup
   gem.date        = Date.today.to_s
-  gem.authors     = [ "Jason Toy" ]
-  gem.email       = "jtoy@rubynow.com"
+  gem.authors     = [ "Jason Toy", "Jonathan Stott" ]
+  gem.email       = "jonathan.stott@gmail.com"
   gem.homepage    = "http://github.com/merb/merb_datamapper"
   gem.description = "Merb plugin that provides support for datamapper"
   gem.summary     = "Merb plugin that allows you to use datamapper with your merb app"
