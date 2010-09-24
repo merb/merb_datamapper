@@ -51,7 +51,7 @@ namespace :db do
   desc "Create the database"
   task :create do
     config = Merb::Orms::DataMapper.config
-    puts "Creating database '#{config[:database]}'"
+    puts "Creating database '%s'" % (config[:adapter] == 'sqlite3' ? config[:path] : config[:database])
     case config[:adapter]
     when 'postgres'
       `createdb -U #{config[:username]} #{config[:database]}`
