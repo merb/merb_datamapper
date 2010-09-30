@@ -11,7 +11,7 @@ module Merb
     storage_names[default_repository_name] = Merb::Plugins.config[:merb_datamapper][:session_storage_name]
 
     property :session_id, String, :length => 32, :required => true, :key => true
-    property :data, Object, :default => {}, :lazy => false
+    property :data, Object, :lazy => false
     property :created_at, DateTime, :default => Proc.new { |r, p| DateTime.now }
 
     ##
@@ -22,7 +22,7 @@ module Merb
     # @returns <nil, DataMapperSessionStore> The session corresponding to the id, or nil
     def self.retrieve_session(session_id)
       if session = get(session_id)
-        session.data
+        session.data || {}
       end
     end
 
