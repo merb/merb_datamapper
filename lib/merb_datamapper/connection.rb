@@ -42,10 +42,13 @@ module Merb
           conf = config.dup
           repositories = conf.delete(:repositories)
           unless conf.empty?
-            conf = Configurable.const_get(conf[:adapter].camel_case).new(conf).to_uri
-            ::DataMapper.setup(:default, conf)
+            conf = Configurable.const_get(conf[:adapter].camel_case).new(conf)
+            ::DataMapper.setup(:default, conf.to_uri)
           end
-          repositories.each { |name, opts| ::DataMapper.setup(name, opts) } if repositories
+          repositories.each do |name, opts|
+            config = Configurable.const_get(opts[:adapter].camel_case).new(opts)
+            ::DataMapper.setup(name, config)
+          end if repositories
         end
 
         # Registering this ORM lets the user choose DataMapper as a session store
