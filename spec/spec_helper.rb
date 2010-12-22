@@ -37,6 +37,7 @@ end
 require 'datamapper_id_map_controller'
 require 'datamapper_session_controller'
 require 'datamapper_model'
+require 'dm-migrations'
 
 DataMapper.setup(:default, 'sqlite3::memory:')
 DataObjects::Sqlite3.logger = Merb.logger
