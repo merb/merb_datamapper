@@ -1,7 +1,12 @@
+require "rubygems"
 require "merb-core"
 
 require "dm-core"
 require "merb_datamapper/connection"
+
+require 'merb_datamapper/configurables/base'
+require 'merb_datamapper/configurables/mysql'
+require 'merb_datamapper/configurables/sqlite3'
 
 Merb::Plugins.add_rakefiles "merb_datamapper" / "merbtasks"
 
