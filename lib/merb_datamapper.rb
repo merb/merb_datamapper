@@ -7,6 +7,7 @@ require "merb_datamapper/connection"
 require 'merb_datamapper/configurables/base'
 require 'merb_datamapper/configurables/mysql'
 require 'merb_datamapper/configurables/sqlite3'
+require 'merb_datamapper/configurables/postgres'
 
 Merb::Plugins.add_rakefiles "merb_datamapper" / "merbtasks"
 
