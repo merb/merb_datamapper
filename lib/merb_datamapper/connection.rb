@@ -47,7 +47,8 @@ module Merb
           end
           repositories.each do |name, opts|
             config = Configurable.const_get(opts[:adapter].camel_case).new(opts)
-            ::DataMapper.setup(name, config)
+            
+            ::DataMapper.setup(name, config.to_uri)
           end if repositories
         end
 
