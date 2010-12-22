@@ -38,3 +38,5 @@ If, for whatever reason, it doesn't suit you, it can be disabled via setting the
 <tt>:use_reposity_block</tt> option to <tt>false</tt>.
 
     Merb::Plugins[:merb_datamapper][:use_reposity_block] = false
+
+=== Now Compatible with DM > 1.0.1
