@@ -16,6 +16,11 @@ module Merb
             @config.empty? 
           end
           
+          def credentials
+            return "" unless @config[:username]
+            "#{@config[:username]}#{":" + @config[:password] || ""}@"
+          end
+          
         end
         
       end

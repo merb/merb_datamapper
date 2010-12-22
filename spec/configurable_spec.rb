@@ -39,4 +39,12 @@ describe Merb::Orms::DataMapper::Configurable::Mysql do
     @config.to_uri.should == "mysql://root:password@localhost:3306/sample"
   end
   
+  it "should be ok with no credentials being supplied" do
+    config = Merb::Orms::DataMapper::Configurable::Mysql.new :adapter => "mysql",
+                                                              :database => "sample",
+                                                              :port => "1234"
+    config.to_uri.should == "mysql://localhost:1234/sample"
+  end
+  
+  
 end
