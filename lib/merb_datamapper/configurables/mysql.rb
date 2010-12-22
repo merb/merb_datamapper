@@ -6,7 +6,8 @@ module Merb
         class Mysql < Base
         
           def to_uri
-            "mysql://#{@config[:username]}#{":" + @config[:password] || ""}@#{@config[:host]}#{":" + (@config[:port] || "3306")}/#{@config[:database]}"
+            credentials = @config[:username] ? "#{@config[:username]}#{":" + @config[:password] || ""}@" : ""
+            "mysql://#{credentials}#{@config[:host] || "localhost"}#{":" + (@config[:port] || "3306")}/#{@config[:database]}"
           end
           
         end

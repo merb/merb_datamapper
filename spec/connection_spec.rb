@@ -37,7 +37,7 @@ describe 'Merb datamapper' do
     }
 
     Merb::Orms::DataMapper.should_receive(:config).and_return(config)
-    DataMapper.should_receive(:setup).with(:default, config)
+    DataMapper.should_receive(:setup).with(:default, "mysql://localhost:3306/mydb")
 
     Merb::Orms::DataMapper.setup_connections
   end

@@ -12,6 +12,10 @@ module Merb
             @config = config
           end
           
+          def empty?
+            @config.empty? 
+          end
+          
         end
         
       end
