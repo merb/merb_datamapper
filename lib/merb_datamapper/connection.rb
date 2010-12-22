@@ -43,8 +43,8 @@ module Merb
           repositories = conf.delete(:repositories)
           unless conf.empty?
             conf = Configurable.const_get(conf[:adapter].camel_case).new(conf).to_uri
+            ::DataMapper.setup(:default, conf)
           end
-          ::DataMapper.setup(:default, conf) unless conf.empty?
           repositories.each { |name, opts| ::DataMapper.setup(name, opts) } if repositories
         end
 
