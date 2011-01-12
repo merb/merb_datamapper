@@ -45,6 +45,4 @@ describe Merb::Orms::DataMapper::Configurable::Mysql do
                                                               :port => "1234"
     config.to_uri.should == "mysql://localhost:1234/sample"
   end
-  
-  
 end
