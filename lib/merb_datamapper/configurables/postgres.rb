@@ -6,7 +6,7 @@ module Merb
         class Postgres < Base
           
           def to_uri
-            "postgres://#{credentials}#{@config[:host] || "localhost"}#{":" + (@config[:port] || "3306")}/#{@config[:database]}"
+            "postgres://#{credentials}#{@config[:host] || "localhost"}#{":" + (@config[:port].to_s || "3306")}/#{@config[:database]}"
           end
         end
       end
