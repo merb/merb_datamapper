@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'merb_datamapper/configurables/base'
 require 'merb_datamapper/configurables/mysql'
 require 'merb_datamapper/configurables/sqlite3'
+require 'merb_datamapper/configurables/postgres'
 
 describe Merb::Orms::DataMapper::Configurable::Sqlite3 do
   
