@@ -2,7 +2,6 @@ module Merb
   module Orms
     module DataMapper
       module Configurable
-        
         class Sqlite3 < Base
           
           def to_uri
