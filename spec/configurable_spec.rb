@@ -16,7 +16,7 @@ describe Merb::Orms::DataMapper::Configurable::Sqlite3 do
   end
   
   it "should provide a correct db url" do
-    @config.to_uri.should == "sqlite://#{Dir.getwd}/sample.db"
+    @config.to_uri.should == "sqlite:#{Dir.getwd}/sample.db"
   end
   
 end
