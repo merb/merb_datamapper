@@ -17,6 +17,7 @@ module Merb
           end
           
           def to_uri
+            #test
             options = { :scheme => self.class.to_s.split('::').last.downcase,
                         :path => @config[:database],
                         :host => @config[:host] || "localhost",
