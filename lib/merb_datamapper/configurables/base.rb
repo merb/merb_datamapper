@@ -18,7 +18,7 @@ module Merb
           
           def credentials
             return "" unless @config[:username]
-            "#{@config[:username]}#{":" + @config[:password] || ""}@"
+            "#{URI.encode(@config[:username])}#{":" + URI.encode(@config[:password]) || ""}@"
           end
           
           def to_uri
