@@ -1,6 +1,7 @@
 require "merb-core"
 
 require "dm-core"
+require "dm-migrations"
 require "merb_datamapper/connection"
 
 Merb::Plugins.add_rakefiles "merb_datamapper" / "merbtasks"

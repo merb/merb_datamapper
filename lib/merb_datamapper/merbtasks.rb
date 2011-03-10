@@ -54,10 +54,13 @@ namespace :db do
     puts "Creating database '%s'" % (config[:adapter] == 'sqlite3' ? config[:path] : config[:database])
     case config[:adapter]
     when 'postgres'
-      `createdb -U #{config[:username]} #{config[:database]}`
+      system('createdb', "-U #{config[:username]}", config[:database].to_s)
     when 'mysql'
       user, password, database = config[:username], config[:password], config[:database]
-      `mysql -u #{user} #{password ? "-p #{password}" : ''} -e "create database #{database}"`
+      args = ["--user=#{user}"]
+      args << "--password=#{password}" if password
+      args << "-e create database #{database}"
+      system('mysql', *args)
     when 'sqlite3'
       Rake::Task['rake:db:automigrate'].invoke
     else
@@ -71,10 +74,13 @@ namespace :db do
     puts "Dropping database '#{config[:database]}'"
     case config[:adapter]
     when 'postgres'
-      `dropdb -U #{config[:username]} #{config[:database]}`
+      system('dropdb', "-U #{config[:username]}", config[:database].to_s)
     when 'mysql'
       user, password, database = config[:username], config[:password], config[:database]
-      `mysql -u #{user} #{password ? "-p #{password}" : ''} -e "drop database #{database}"`
+      args = ["--user=#{user}"]
+      args << "--password=#{password}" if password
+      args << "-e drop database #{database}"
+      system('mysql', *args)
     else
       raise "Adapter #{config[:adapter]} not supported for dropping databases yet.\ntry db:automigrate"
     end
