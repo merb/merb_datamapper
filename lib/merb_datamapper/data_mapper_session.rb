@@ -19,7 +19,7 @@ module Merb
     #
     # @param session_id<String> The session_id to retrieve the session for
     #
-    # @returns <nil, DataMapperSessionStore> The session corresponding to the id, or nil
+    # @return <nil, DataMapperSessionStore> The session corresponding to the id, or nil
     def self.retrieve_session(session_id)
       if session = get(session_id)
         session.data

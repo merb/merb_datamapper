@@ -16,10 +16,16 @@ Gem::Specification.new do |gem|
   gem.description = "Merb plugin that provides support for datamapper"
   gem.summary     = "Merb plugin that allows you to use datamapper with your merb app"
 
-  gem.has_rdoc    = true 
+  gem.has_yardoc    = true
   gem.require_paths = ['lib']
-  gem.extra_rdoc_files = ['README', 'LICENSE', 'TODO']
-  gem.files = Dir['Generators', 'Rakefile', '{lib,spec}/**/*', 'README*', 'LICENSE*', 'TODO*'] & `git ls-files -z`.split("\0")
+  gem.files = Dir[
+    'Generators',
+    'Rakefile',
+    '{lib,spec}/**/*',
+    'README*',
+    'LICENSE*',
+    'TODO*'
+  ] & `git ls-files -z`.split("\0")
 
   # Runtime dependencies
   gem.add_dependency 'merb-core',     "~> 1.1"

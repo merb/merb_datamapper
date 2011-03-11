@@ -1,0 +1,6 @@
+--output-dir doc/yard
+--tag overridable:Overridable
+--markup markdown
+--markup-provider kramdown
+--exclude lib/generators/
+lib/**/*.rb

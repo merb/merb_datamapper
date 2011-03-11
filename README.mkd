@@ -1,0 +1,44 @@
+# merb_datamapper
+
+A plugin for the Merb framework that provides access to the [DataMapper][dmweb]
+ORM.
+
+## Features
+
+* Automatic connection to a data-store through DataMapper, via database.yml
+* Easy use of multiple repositories.
+* Generators for models, controllers and migrations.
+* Sessions stored in a data-store managed by DataMapper
+* wraps actions in DataMapper repository blocks, to enable the IdentityMap
+
+## Sessions
+
+To use DataMapper for storing sessions, set the session store and add the
+proper ORM dependency in `init.rb`:
+
+    Merb::Config.use { |c|
+      c[:session_store] = 'datamapper'
+    }
+
+    use_orm :datamapper
+
+Sessions can be configured by a few plugin options:
+
+* **`:session_storage_name`** - The name of the table to use to store
+  the sessions (defaults to 'session')
+* **`:session_repository_name`** - The repository to use for sessions.
+  (defaults to `:default`)
+
+## Repository Blocks
+
+Repository Blocks are a DataMapper feature, which enables the use of the
+DataMapper IdentityMap, which can help with certain DataMapper features
+such as strategic eager loading.  Check the [DataMapper website][dmweb]
+for more information on these features.
+
+If, for whatever reason, it doesn't suit you, it can be disabled via
+setting the `:use_reposity_block` option to `false`:
+
+    Merb::Plugins[:merb_datamapper][:use_reposity_block] = false
+
+[dmweb]: http://www.datamapper.org
