@@ -16,7 +16,6 @@ Gem::Specification.new do |gem|
   gem.description = "Merb plugin that provides support for datamapper"
   gem.summary     = "Merb plugin that allows you to use datamapper with your merb app"
 
-  gem.has_yardoc    = true
   gem.require_paths = ['lib']
   gem.files = Dir[
     'Generators',
