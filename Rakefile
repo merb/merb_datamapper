@@ -1,17 +1,16 @@
 require 'rubygems'
 require 'rake'
-require 'spec/rake/spectask'
+require 'rspec/core/rake_task'
 require File.expand_path("../lib/merb_datamapper/version", __FILE__)
 
-Spec::Rake::SpecTask.new(:spec) do |spec|
-  spec.spec_opts << '--options' << 'spec/spec.opts' if File.exists?('spec/spec.opts')
-  spec.libs << 'lib' << 'spec'
-  spec.spec_files = FileList['spec/**/*_spec.rb']
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.pattern = "spec/**/*_spec.rb"
+  spec.fail_on_error = false
 end
 
-Spec::Rake::SpecTask.new(:rcov) do |spec|
-  spec.libs << 'lib' << 'spec'
-  spec.pattern = 'spec/**/*_spec.rb'
+RSpec::Core::RakeTask.new(:rcov) do |spec|
+  spec.pattern = "spec/**/*_spec.rb"
+  spec.fail_on_error = false
   spec.rcov = true
 end
 

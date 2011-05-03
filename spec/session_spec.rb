@@ -13,10 +13,10 @@ describe Merb::DataMapperSession do
   end
 
   it "should persist values" do
-    response = request('/session/set')
+    response = visit('/session/set')
     response.should be_successful
     response.body.should == 'value'
-    response = request('/session/get')
+    response = visit('/session/get')
     response.should be_successful
     response.body.should == 'value'
   end

@@ -116,9 +116,10 @@ describe "configuration options" do
       @session_container.storage_names[:default].should == 'sessions'
     end
     it "uses the set table name when it is set" do
-      pending "this should work but doesn't"
-      Merb::Plugins.config[:merb_datamapper][:session_storage_name] = 'foos'
-      @session_container.storage_names[:default].should == 'foos'
+      pending "this should work but doesn't" do
+        Merb::Plugins.config[:merb_datamapper][:session_storage_name] = 'foos'
+        @session_container.storage_names[:default].should == 'foos'
+      end
     end
   end
 end

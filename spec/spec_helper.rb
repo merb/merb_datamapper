@@ -11,8 +11,7 @@ require 'merb-core/test/helpers'
 require "merb_datamapper"
 
 # Satisfies Autotest and anyone else not using the Rake tasks
-require 'spec'
-
+require 'rspec'
 
 Merb.start(
   :environment   => 'test',
@@ -22,7 +21,7 @@ Merb.start(
   :log_level     => :debug
 )
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
   config.include Merb::Test::RequestHelper
 end
 
