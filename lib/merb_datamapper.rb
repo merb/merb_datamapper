@@ -96,8 +96,3 @@ class Merb::Orms::DataMapper::IdentityMapSupport < Merb::BootLoader
   end
 end
 
-
-generators = File.join(File.dirname(__FILE__), 'generators')
-Merb.add_generators generators / 'data_mapper_model'
-Merb.add_generators generators / 'data_mapper_resource_controller'
-Merb.add_generators generators / 'data_mapper_migration'
